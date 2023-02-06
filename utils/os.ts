@@ -15,13 +15,3 @@ export async function * walk (dir: string): AsyncIterableIterator<[string, strin
   yield [rootPath, dirs, files]
 }
 
-const readSrc = async (): Promise<void> => {
-  for await (const [root, dirs, files] of walk('./src')) {
-    console.log(root)
-    console.log(dirs)
-    console.log(files)
-  }
-}
-
-void readSrc()
-
