@@ -17,12 +17,16 @@ As the Python walk function, for each directory in the three rooted at directory
 
 ```typescript
 import { os } from 'nodejsutils'
+import {join} from 'path'
 
 const readSrc = async (): Promise<void> => {
   for await (const [root, dirs, files] of os.walk('./src')) {
-    console.log(root)
-    console.log(dirs)
-    console.log(files)
+    for (const name of files) {
+      console.log(path.join(root, name))
+    }
+    for (const name of dirs){
+      console.log(path.join(root, name))
+    }
   }
 }
 
