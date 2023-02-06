@@ -23,31 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.walk = void 0;
-const fsp = __importStar(require("fs/promises"));
-const path = __importStar(require("path"));
-async function* walk(dir) {
-    const rootPath = dir;
-    const dirs = [];
-    const files = [];
-    for await (const dirEntity of await fsp.opendir(dir)) {
-        if (dirEntity.isDirectory())
-            dirs.push(dirEntity.name);
-        else if (dirEntity.isFile())
-            files.push(dirEntity.name);
-    }
-    for (const dirName of dirs) {
-        yield* walk(path.join(dir, dirName));
-    }
-    yield [rootPath, dirs, files];
-}
-exports.walk = walk;
-const readSrc = async () => {
-    for await (const [root, dirs, files] of walk('./src')) {
-        console.log(root);
-        console.log(dirs);
-        console.log(files);
-    }
-};
-void readSrc();
-//# sourceMappingURL=os.js.map
+exports.os = void 0;
+const nuos = __importStar(require("./utils/os"));
+exports.os = nuos;
+//# sourceMappingURL=index.js.map
