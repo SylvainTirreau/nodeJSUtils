@@ -2,6 +2,12 @@
 
 Some utilities for Node.js
 
+## Installation
+
+`npm install https://github.com/SylvainTirreau/nodeJSUtils `
+
+
+
 ## Usage
 
 ### Walk
