@@ -22,8 +22,8 @@
   },
   "homepage": "https://github.com/SylvainTirreau/nodeJSUtils#readme",
   "engines": {
-    "npm": "8.19.1",
-    "node": "18.9.0"
+    "npm": ">=8.19.1",
+    "node": ">=18.9.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.19",
