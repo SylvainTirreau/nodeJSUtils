@@ -22,10 +22,10 @@ import {join} from 'path'
 const readSrc = async (): Promise<void> => {
   for await (const [root, dirs, files] of os.walk('./src')) {
     for (const name of files) {
-      console.log(path.join(root, name))
+      console.log(join(root, name))
     }
     for (const name of dirs){
-      console.log(path.join(root, name))
+      console.log(join(root, name))
     }
   }
 }
