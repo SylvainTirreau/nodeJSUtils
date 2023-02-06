@@ -42,12 +42,4 @@ async function* walk(dir) {
     yield [rootPath, dirs, files];
 }
 exports.walk = walk;
-const readSrc = async () => {
-    for await (const [root, dirs, files] of walk('./src')) {
-        console.log(root);
-        console.log(dirs);
-        console.log(files);
-    }
-};
-void readSrc();
 //# sourceMappingURL=os.js.map
