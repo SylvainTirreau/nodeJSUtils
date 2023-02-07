@@ -11,16 +11,18 @@ Some utilities for Node.js
 ## Usage
 
 ### Walk
-Simple version of the Python [walk function](https://docs.python.org/3/library/os.html) to get all directories and files in a folder.
+Simple version of the Python [walkAsync function](https://docs.python.org/3/library/os.html) to get all directories and files in a folder.
 
-As the Python walk function, for each directory in the three rooted at directory, it yield an array *[dirpath, dirnames, filenames]*.
+As the Python walk function, for each directory in the tree rooted at directory, it yield an array *[dirpath, dirnames, filenames]*.
+
+#### Asynchronous function
 
 ```typescript
 import { os } from 'nodejsutils'
 import {join} from 'path'
 
 const readSrc = async (): Promise<void> => {
-  for await (const [root, dirs, files] of os.walk('./src')) {
+  for await (const [root, dirs, files] of os.walkAsync('./src')) {
     for (const name of files) {
       console.log(join(root, name))
     }
@@ -33,3 +35,18 @@ const readSrc = async (): Promise<void> => {
 void readSrc()
 ```
 
+#### Synchronous function
+
+```typescript
+import { os } from 'nodejsutils'
+import {join} from 'path'
+
+for (const [root, dirs, files] of os.walkSync('./src')) {
+  for (const name of files) {
+      console.log(join(root, name))
+    }
+    for (const name of dirs){
+      console.log(join(root, name))
+    }
+}
+```

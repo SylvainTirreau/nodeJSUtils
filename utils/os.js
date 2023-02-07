@@ -22,11 +22,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.walk = void 0;
+exports.walkSync = exports.walkAsync = void 0;
 const fsp = __importStar(require("fs/promises"));
 const path = __importStar(require("path"));
-async function* walk(dir) {
+const fs_1 = __importDefault(require("fs"));
+async function* walkAsync(dir) {
     const rootPath = dir;
     const dirs = [];
     const files = [];
@@ -37,9 +41,25 @@ async function* walk(dir) {
             files.push(dirEntity.name);
     }
     for (const dirName of dirs) {
-        yield* walk(path.join(dir, dirName));
+        yield* walkAsync(path.join(dir, dirName));
     }
     yield [rootPath, dirs, files];
 }
-exports.walk = walk;
+exports.walkAsync = walkAsync;
+function* walkSync(dir) {
+    const rootPath = dir;
+    const dirs = [];
+    const files = [];
+    for (const dirEntity of fs_1.default.readdirSync(dir, { withFileTypes: true })) {
+        if (dirEntity.isDirectory())
+            dirs.push(dirEntity.name);
+        else if (dirEntity.isFile())
+            files.push(dirEntity.name);
+    }
+    for (const dirName of dirs) {
+        yield* walkSync(path.join(dir, dirName));
+    }
+    yield [rootPath, dirs, files];
+}
+exports.walkSync = walkSync;
 //# sourceMappingURL=os.js.map
