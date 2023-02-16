@@ -23,7 +23,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.os = void 0;
+exports.map = exports.os = void 0;
 const nuos = __importStar(require("./utils/os"));
+const numap = __importStar(require("./utils/map"));
 exports.os = nuos;
+exports.map = numap;
 //# sourceMappingURL=index.js.map
