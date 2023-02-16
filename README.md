@@ -5,7 +5,7 @@ Some utilities for Node.js
 ## Installation
 
 `npm install https://github.com/SylvainTirreau/nodeJSUtils `
-
+<small>Lazy to register a npm package.</small>
 
 
 ## Usage
@@ -35,6 +35,12 @@ const readSrc = async (): Promise<void> => {
 void readSrc()
 ```
 
+You can also import like this:
+
+```typescript
+import { walkAsync as walk } from 'nodejsutils/utils/os'
+```
+
 #### Synchronous function
 
 ```typescript
@@ -50,3 +56,10 @@ for (const [root, dirs, files] of os.walkSync('./src')) {
     }
 }
 ```
+
+You can also import like this:
+
+```typescript
+import { walkSync as walk } from 'nodejsutils/utils/os'
+```
+
