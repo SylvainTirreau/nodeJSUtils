@@ -19,6 +19,8 @@ As the Python walk function, for each directory in the tree rooted at directory,
 
 ```typescript
 import { os } from 'nodejsutils'
+// or
+// import { walkAsync as walk } from 'nodejsutils/utils/os'
 import {join} from 'path'
 
 const readSrc = async (): Promise<void> => {
@@ -35,16 +37,12 @@ const readSrc = async (): Promise<void> => {
 void readSrc()
 ```
 
-You can also import like this:
-
-```typescript
-import { walkAsync as walk } from 'nodejsutils/utils/os'
-```
-
 #### Synchronous function
 
 ```typescript
 import { os } from 'nodejsutils'
+// or
+// import { walkSync as walk } from 'nodejsutils/utils/os'
 import {join} from 'path'
 
 for (const [root, dirs, files] of os.walkSync('./src')) {
@@ -56,10 +54,3 @@ for (const [root, dirs, files] of os.walkSync('./src')) {
     }
 }
 ```
-
-You can also import like this:
-
-```typescript
-import { walkSync as walk } from 'nodejsutils/utils/os'
-```
-
